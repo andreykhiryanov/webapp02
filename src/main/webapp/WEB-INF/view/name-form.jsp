@@ -8,11 +8,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Hello World - Input Form</title>
+    <title>What is your name?</title>
 </head>
 <body>
 
-<form action="processForm" method="get">
+<form action="/processFormVersionTwo" method="get">
     <input type="text" name="studentName" placeholder="What's your name?"/>
     <input type="submit"/>
 </form>

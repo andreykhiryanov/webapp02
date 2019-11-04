@@ -1,18 +1,48 @@
 package com.generation.brainless.webapp02;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class HelloWorldController {
 
-    @RequestMapping("/showForm")
+    @RequestMapping("/nameForm")
     public String showForm() {
-        return "helloworld-form";
+        return "name-form";
+    }
+
+    @RequestMapping("/ageForm")
+    public String ageForm() {
+        return "age-form";
     }
 
     @RequestMapping("/processForm")
     public String processForm() {
+        return "helloworld";
+    }
+
+    @RequestMapping("/processFormVersionTwo")
+    public String letsShooutDude(HttpServletRequest request, Model model) {
+
+        // Reading the request parameter from the HTML form
+
+        String theName = request.getParameter("studentName");
+
+        // Convert the data to UPPER case
+
+        theName = theName.toUpperCase();
+
+        // Create the message
+
+        String result = "HEY, " + theName + "!!!";
+
+        // Add message to the model
+
+        model.addAttribute("message", result);
+
         return "helloworld";
     }
 
