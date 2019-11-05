@@ -16,7 +16,11 @@
 
 <hr>
 
-<a href="/nameForm">Hello World form</a>
+<a href="/helloWorldForm">Hello World form</a>
+
+<hr>
+
+<a href="/nameForm">New form</a>
 
 </body>
 </html>

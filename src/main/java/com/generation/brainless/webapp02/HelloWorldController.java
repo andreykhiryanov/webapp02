@@ -10,14 +10,37 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class HelloWorldController {
 
+    private String name = "default";
+    private int age = 666;
+
     @RequestMapping("/nameForm")
-    public String showForm() {
-        return "helloworld-form";
+    public String showNameForm() {
+        return "name-form";
     }
 
-    @RequestMapping("/ageForm")
-    public String ageForm() {
+    @RequestMapping("/setName")
+    public String setName(@RequestParam("humanName") String name) {
+        if (!name.isEmpty()) this.name = name;
         return "age-form";
+    }
+
+    @RequestMapping("/setAge")
+    public String setAge(@RequestParam("humanAge") String age, Model model) {
+        if (!age.isEmpty()) this.age = Integer.parseInt(age);
+        processData(model);
+        return "info-form";
+    }
+
+    public void processData(Model model) {
+        model.addAttribute("humanName", this.name);
+        model.addAttribute("humanAge", this.age);
+    }
+
+
+
+    @RequestMapping("/helloWorldForm")
+    public String showForm() {
+        return "helloworld-form";
     }
 
     @RequestMapping("/processForm")
@@ -49,10 +72,6 @@ public class HelloWorldController {
 
     @RequestMapping("/processFormVersionThree")
     public String processFormVersionThree(@RequestParam("studentName") String name, Model model) {
-
-        // Reading the request parameter from the HTML form
-
-
 
         // Convert the data to UPPER case
 
