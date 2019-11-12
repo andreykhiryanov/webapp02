@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class HelloWorldController {
 
-    private String name = "default";
+    private String name = "MrNoName";
     private int age = 666;
 
     @RequestMapping("/nameForm")
@@ -19,8 +19,9 @@ public class HelloWorldController {
     }
 
     @RequestMapping("/setName")
-    public String setName(@RequestParam("humanName") String name) {
+    public String setName(@RequestParam("humanName") String name, Model model) {
         if (!name.isEmpty()) this.name = name;
+        model.addAttribute("humanName", this.name);
         return "age-form";
     }
 
@@ -36,7 +37,7 @@ public class HelloWorldController {
         model.addAttribute("humanAge", this.age);
     }
 
-
+    // Old functionality.
 
     @RequestMapping("/helloWorldForm")
     public String showForm() {
